@@ -167,6 +167,7 @@
             // 
             // tmrUpdate
             // 
+            this.tmrUpdate.Interval = 10;
             this.tmrUpdate.Tick += new System.EventHandler(this.tmrUpdate_Tick);
             // 
             // Form1
