@@ -28,7 +28,17 @@ namespace AI_GUI
         private void ClearTempFiles()
         {
             // Delete old steps pictures (that are produced for videos)
-            foreach (System.IO.FileInfo file in new DirectoryInfo(aiPath + @"\steps").GetFiles()) file.Delete();
+            foreach (System.IO.FileInfo file in new DirectoryInfo(aiPath + @"\steps").GetFiles())
+            {
+                try
+                {
+                    file.Delete();
+                }
+                catch (Exception)
+                {
+                    // Sometimes a single file can't be deleted if it's still locked, but it does not waste much space
+                }
+            }
         }
 
         private void btnStart_Click(object sender, EventArgs e)
