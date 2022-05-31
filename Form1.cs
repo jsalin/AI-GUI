@@ -83,8 +83,10 @@ namespace AI_GUI
             }
 
             // "Enter" the commands to the anaconda session
+            string vqganCmd = "python -u generate.py -p \"" + words + "\" -o " + fileName;
+            if (cbVideo.Checked) vqganCmd += " -vid";
             process.StandardInput.WriteLine("conda activate vqgan");
-            process.StandardInput.WriteLine("python -u generate.py -p \"" + words + "\" -vid -o " + fileName); // -vid
+            process.StandardInput.WriteLine(vqganCmd);
             process.StandardInput.WriteLine("echo " + endMarker);
         }
 

@@ -42,6 +42,7 @@
             this.pbOutput = new System.Windows.Forms.PictureBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
+            this.cbVideo = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbOutput)).BeginInit();
@@ -66,6 +67,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbVideo);
             this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Controls.Add(this.txtWords);
@@ -170,6 +172,16 @@
             this.tmrUpdate.Interval = 10;
             this.tmrUpdate.Tick += new System.EventHandler(this.tmrUpdate_Tick);
             // 
+            // cbVideo
+            // 
+            this.cbVideo.AutoSize = true;
+            this.cbVideo.Location = new System.Drawing.Point(16, 56);
+            this.cbVideo.Name = "cbVideo";
+            this.cbVideo.Size = new System.Drawing.Size(137, 19);
+            this.cbVideo.TabIndex = 4;
+            this.cbVideo.Text = "&Create video (slower)";
+            this.cbVideo.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -207,5 +219,6 @@
         private TextBox txtOutput;
         private System.Windows.Forms.Timer tmrUpdate;
         private Button btnStop;
+        private CheckBox cbVideo;
     }
 }
