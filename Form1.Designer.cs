@@ -33,6 +33,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtWords = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbHeight = new System.Windows.Forms.TextBox();
+            this.tbWidth = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbVideo = new System.Windows.Forms.CheckBox();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -42,7 +47,6 @@
             this.pbOutput = new System.Windows.Forms.PictureBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.tmrUpdate = new System.Windows.Forms.Timer(this.components);
-            this.cbVideo = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbOutput)).BeginInit();
@@ -51,7 +55,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 24);
+            this.label1.Location = new System.Drawing.Point(16, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 0;
@@ -59,14 +63,18 @@
             // 
             // txtWords
             // 
-            this.txtWords.Location = new System.Drawing.Point(104, 24);
+            this.txtWords.Location = new System.Drawing.Point(120, 24);
             this.txtWords.Name = "txtWords";
-            this.txtWords.Size = new System.Drawing.Size(624, 23);
+            this.txtWords.Size = new System.Drawing.Size(608, 23);
             this.txtWords.TabIndex = 1;
             this.txtWords.Text = "Creation of a sample picture";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.tbHeight);
+            this.groupBox1.Controls.Add(this.tbWidth);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbVideo);
             this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnStart);
@@ -74,17 +82,59 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(16, 16);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(744, 100);
+            this.groupBox1.Size = new System.Drawing.Size(744, 112);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(168, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 15);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "x";
+            // 
+            // tbHeight
+            // 
+            this.tbHeight.Location = new System.Drawing.Point(184, 80);
+            this.tbHeight.Name = "tbHeight";
+            this.tbHeight.Size = new System.Drawing.Size(44, 23);
+            this.tbHeight.TabIndex = 7;
+            // 
+            // tbWidth
+            // 
+            this.tbWidth.Location = new System.Drawing.Point(120, 80);
+            this.tbWidth.Name = "tbWidth";
+            this.tbWidth.Size = new System.Drawing.Size(44, 23);
+            this.tbWidth.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(97, 15);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Non-default size:";
+            // 
+            // cbVideo
+            // 
+            this.cbVideo.AutoSize = true;
+            this.cbVideo.Location = new System.Drawing.Point(16, 56);
+            this.cbVideo.Name = "cbVideo";
+            this.cbVideo.Size = new System.Drawing.Size(137, 19);
+            this.cbVideo.TabIndex = 4;
+            this.cbVideo.Text = "&Create video (slower)";
+            this.cbVideo.UseVisualStyleBackColor = true;
+            // 
             // btnStop
             // 
             this.btnStop.Enabled = false;
-            this.btnStop.Location = new System.Drawing.Point(640, 64);
+            this.btnStop.Location = new System.Drawing.Point(640, 80);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(91, 23);
+            this.btnStop.Size = new System.Drawing.Size(88, 23);
             this.btnStop.TabIndex = 3;
             this.btnStop.Text = "&Stop";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -92,9 +142,9 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(544, 64);
+            this.btnStart.Location = new System.Drawing.Point(552, 80);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(91, 23);
+            this.btnStart.Size = new System.Drawing.Size(83, 23);
             this.btnStart.TabIndex = 2;
             this.btnStart.Text = "&Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -107,7 +157,7 @@
             this.groupBox2.Controls.Add(this.btnOpenFile);
             this.groupBox2.Controls.Add(this.pbOutput);
             this.groupBox2.Controls.Add(this.txtOutput);
-            this.groupBox2.Location = new System.Drawing.Point(16, 128);
+            this.groupBox2.Location = new System.Drawing.Point(16, 136);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(744, 384);
             this.groupBox2.TabIndex = 3;
@@ -148,9 +198,11 @@
             // 
             // pbOutput
             // 
+            this.pbOutput.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pbOutput.Location = new System.Drawing.Point(424, 32);
             this.pbOutput.Name = "pbOutput";
             this.pbOutput.Size = new System.Drawing.Size(304, 304);
+            this.pbOutput.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbOutput.TabIndex = 1;
             this.pbOutput.TabStop = false;
             // 
@@ -172,21 +224,11 @@
             this.tmrUpdate.Interval = 10;
             this.tmrUpdate.Tick += new System.EventHandler(this.tmrUpdate_Tick);
             // 
-            // cbVideo
-            // 
-            this.cbVideo.AutoSize = true;
-            this.cbVideo.Location = new System.Drawing.Point(16, 56);
-            this.cbVideo.Name = "cbVideo";
-            this.cbVideo.Size = new System.Drawing.Size(137, 19);
-            this.cbVideo.TabIndex = 4;
-            this.cbVideo.Text = "&Create video (slower)";
-            this.cbVideo.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 530);
+            this.ClientSize = new System.Drawing.Size(778, 538);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -220,5 +262,9 @@
         private System.Windows.Forms.Timer tmrUpdate;
         private Button btnStop;
         private CheckBox cbVideo;
+        private Label label3;
+        private TextBox tbHeight;
+        private TextBox tbWidth;
+        private Label label2;
     }
 }

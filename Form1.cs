@@ -20,6 +20,18 @@ namespace AI_GUI
         string fileName = "";
         string lastPictureFile = "";
 
+        /// <summary>
+        /// To enable or disable all input fields, called when starting or stopping the progress
+        /// </summary>
+        /// <param name="enable"></param>
+        private void enableInputs(bool enable)
+        {
+            txtWords.Enabled = enable;
+            tbWidth.Enabled = enable;
+            tbHeight.Enabled = enable;
+            cbVideo.Enabled = enable;
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -55,7 +67,7 @@ namespace AI_GUI
             btnCopy.Enabled = false;
             btnStart.Enabled = false;
             btnStop.Enabled = true;
-            txtWords.Enabled = false;
+            enableInputs(false);
 
             // Generate a safe image file name from the given words
             fileName = Regex.Replace(txtWords.Text.Trim().Replace(" ", "_"), "[^a-zA-Z0-9_]+", "") + ".png";
@@ -82,9 +94,12 @@ namespace AI_GUI
                 }
             }
 
-            // "Enter" the commands to the anaconda session
+            // Create command line for vqgan
             string vqganCmd = "python -u generate.py -p \"" + words + "\" -o " + fileName;
             if (cbVideo.Checked) vqganCmd += " -vid";
+            if ((tbWidth.Text != "") && (tbHeight.Text != "")) vqganCmd += " -s " + tbWidth.Text + " " + tbHeight.Text;
+            
+            // "Enter" all the commands to the anaconda session
             process.StandardInput.WriteLine("conda activate vqgan");
             process.StandardInput.WriteLine(vqganCmd);
             process.StandardInput.WriteLine("echo " + endMarker);
@@ -139,7 +154,7 @@ namespace AI_GUI
                     btnCopy.Enabled = true;
                     btnOpenFile.Enabled = true;
                     btnStop.Enabled = false;
-                    txtWords.Enabled = true;
+                    enableInputs(true);
 
                     pbOutput.ImageLocation = fullFilePath;
 
@@ -161,7 +176,7 @@ namespace AI_GUI
             try { process.Kill(true); } catch (Exception) { };
             btnStart.Enabled = true;
             btnStop.Enabled = false;
-            txtWords.Enabled = true;
+            enableInputs(true);
             ClearTempFiles();
         }
 
